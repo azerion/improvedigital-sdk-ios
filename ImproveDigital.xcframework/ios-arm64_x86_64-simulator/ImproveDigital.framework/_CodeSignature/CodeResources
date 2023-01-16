@@ -90,11 +90,11 @@
 		</data>
 		<key>ImproveDigitalResources.bundle/Info.plist</key>
 		<data>
-		TmqREiRrorUlQDxXeLZ1bTpg03A=
+		gZUH/90hCIPTKHe5zklcoQsqO5Q=
 		</data>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeDirectory</key>
 		<data>
-		fEPtG0pKMKT2+TgarKaU4ZbzvIU=
+		v2II2kVpPHCdJh7w5eWn8Vkfe98=
 		</data>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeRequirements</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeRequirements-1</key>
 		<data>
-		qV1E24jPoVkQgLM+q97yRzqAj6k=
+		3/VkOjNqEsL8MO+rG+LietxSJC0=
 		</data>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeResources</key>
 		<data>
@@ -134,7 +134,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		RvGdg/q2DW/tFwR12q9TlxRCVDU=
+		VMKqruntDlvyOQxYjJZByf9sxgo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -378,22 +378,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TmqREiRrorUlQDxXeLZ1bTpg03A=
+			gZUH/90hCIPTKHe5zklcoQsqO5Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			mVoVeArXSEaUiWgA8mG0aEt04WQEdUcf9xytPEokNJw=
+			HwWLScMnz4UcdLVy/s9Wq2R54HZjUIeR0sGxao3Q6M8=
 			</data>
 		</dict>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeDirectory</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fEPtG0pKMKT2+TgarKaU4ZbzvIU=
+			v2II2kVpPHCdJh7w5eWn8Vkfe98=
 			</data>
 			<key>hash2</key>
 			<data>
-			N7L5xUnBzl51CLlVpFteEjlLdH12lQFAMG1v/D9aS14=
+			ETY0NuSnERZyzzzpMlrKY/R25+VCCzctBHTe/c2k3Ug=
 			</data>
 		</dict>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeRequirements</key>
@@ -411,11 +411,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qV1E24jPoVkQgLM+q97yRzqAj6k=
+			3/VkOjNqEsL8MO+rG+LietxSJC0=
 			</data>
 			<key>hash2</key>
 			<data>
-			P3OmGTjGUkD55Y0E3+EuW8zyGC2nR/VTygG5Jo+MEa4=
+			tfw0E1/Xw1nlaVQ5bpnrOJW9zzEoHXMO68lgDPWJHoU=
 			</data>
 		</dict>
 		<key>ImproveDigitalResources.bundle/_CodeSignature/CodeResources</key>
