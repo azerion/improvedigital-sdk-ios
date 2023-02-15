@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name = 'ImproveDigital'
-s.version = '1.0.0-preview.2'
+s.version = '1.0.0'
 s.license = 'MIT'
 s.summary = 'SDK for showing Ads from Improve Digital'
 s.homepage = 'https://github.com/azerion/improvedigital-sdk-ios'
