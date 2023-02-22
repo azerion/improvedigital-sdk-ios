@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/IMDAdNetworkStatus.h</key>
+		<data>
+		/1O/ov0KbZk7IeKBQMrOpWi2f/U=
+		</data>
 		<key>Headers/IMDAdSize.h</key>
 		<data>
 		Qlp2bMWkCWMTLMbYIbk1ws+PX1c=
@@ -50,7 +54,7 @@
 		</data>
 		<key>Headers/ImproveDigital.h</key>
 		<data>
-		EF8QtlGIHaKY5qg7b0O942YsT6k=
+		HHX4KIQ5WpBf4cMbDNixCcDXRBM=
 		</data>
 		<key>ImproveDigitalResources.bundle/ImproveDigital.storyboardc/7r0-dE-Y7f-view-sR9-qJ-gzs.nib</key>
 		<data>
@@ -134,7 +138,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		VMKqruntDlvyOQxYjJZByf9sxgo=
+		G6QIkt7A0PQujvmadGrl3CYWmM0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -143,6 +147,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/IMDAdNetworkStatus.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/1O/ov0KbZk7IeKBQMrOpWi2f/U=
+			</data>
+			<key>hash2</key>
+			<data>
+			57nz6cmSb7jk/Ld1WurRk4dRFvq/iafK19fQcvaYRqU=
+			</data>
+		</dict>
 		<key>Headers/IMDAdSize.h</key>
 		<dict>
 			<key>hash</key>
@@ -268,11 +283,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EF8QtlGIHaKY5qg7b0O942YsT6k=
+			HHX4KIQ5WpBf4cMbDNixCcDXRBM=
 			</data>
 			<key>hash2</key>
 			<data>
-			i42D2y8pNGrxjNcqjXuAwDjaDUtc5UC/gqjZC55GalM=
+			odFRDOlpBtbR7u0llTJ1ohHlwT04FIYqhCnv9d+OJiw=
 			</data>
 		</dict>
 		<key>ImproveDigitalResources.bundle/ImproveDigital.storyboardc/7r0-dE-Y7f-view-sR9-qJ-gzs.nib</key>
