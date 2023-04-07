@@ -37,6 +37,15 @@ post_install do |installer|
   end
 end
 ```
+**NOTE for Intel based Mac:** Macs with Intel chipset doesn't supports arm64 simulator architecture. If you want to run it on Intel based Macs then you need to add following script on your Podfile.
+
+```ruby
+post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+ end
+end
+```
 
 Open terminal and go to the project location. Install pod using below command
 ```
