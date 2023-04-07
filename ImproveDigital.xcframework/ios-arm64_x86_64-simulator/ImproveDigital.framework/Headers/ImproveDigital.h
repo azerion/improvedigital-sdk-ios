@@ -25,5 +25,7 @@ typedef void (^InitializationCompletionHandler)(IMDAdNetworkStatus *);
 
 + (void)initializeWithSettings:(IMDSettings *)settings withCompletionHandler:(InitializationCompletionHandler)completionHandler;
 
++ (BOOL)isInitialized;
+
 @end
 
