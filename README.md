@@ -51,6 +51,21 @@ Open terminal and go to the project location. Install pod using below command
 ```
 pod install --repo-update
 ```
+
+### **Swift Package Manager**
+1. Go to File --> Add Packages... and search for ImproveDigital package using following github url:
+
+<https://github.com/azerion/improvedigital-sdk-ios>
+
+![Search ImproveDigital package](github_resources/search_package.png "Search ImproveDigital package")
+
+Add the ImproveDigital package
+
+![ImproveDigital package](github_resources/add_package.png "ImproveDigital package")
+
+
+
+2. Add ImpreveDigitalResource.bundle from the ImproveDigital package to your Copy Bundle Resources build phase.
 ## **How To Use**
 ### **Initialization**
 Improve Digital SDK initializes with a `IMDSettings` object. Create a settings object with your preferable values and initialize the sdk like bellow
