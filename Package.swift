@@ -21,7 +21,8 @@ let package = Package(
                 .target(name: "GoogleInteractiveMediaAds", condition: .when(platforms: [.iOS]))
             ],
             path: "ImproveDigitalWrapper",
-            exclude: ["../github_resources"]
+            exclude: ["github_resources"],
+            resources: [.copy("Resources/ImproveDigitalResources.bundle")]
         ),
         .binaryTarget(name: "ImproveDigital", path: "ImproveDigital.xcframework"),
         .binaryTarget(name: "GoogleInteractiveMediaAds", path: "Dependencies/GoogleInteractiveMediaAds.xcframework")
