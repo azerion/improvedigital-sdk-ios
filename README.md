@@ -57,15 +57,16 @@ pod install --repo-update
 
 <https://github.com/azerion/improvedigital-sdk-ios>
 
-![Search ImproveDigital package](github_resources/search_package.png "Search ImproveDigital package")
+![Search ImproveDigital package](ImproveDigitalWrapper/github_resources/search_package.png "Search ImproveDigital package")
 
 Add the ImproveDigital package
 
-![ImproveDigital package](github_resources/add_package.png "ImproveDigital package")
+![ImproveDigital package](ImproveDigitalWrapper/github_resources/add_package.png "ImproveDigital package")
 
 
 
-2. Add ImpreveDigitalResource.bundle from the ImproveDigital package to your Copy Bundle Resources build phase.
+2. Add `-ObjC` flag in your `Other Linker Flags` build settings.
+![Other Linker Flags](ImproveDigitalWrapper/github_resources/linker_flag.png "-ObjC Other Linker Flags")
 ## **How To Use**
 ### **Initialization**
 Improve Digital SDK initializes with a `IMDSettings` object. Create a settings object with your preferable values and initialize the sdk like bellow
