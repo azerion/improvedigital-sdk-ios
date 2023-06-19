@@ -190,166 +190,225 @@ Implement `IMDBannerViewDelegate` to get success and error callbacks.
 
 ## **Interstitial Ad**
 
-Initialize interstitial ad using `IMDInterstitialAd` class with `IMDInterstitialAdDelegate`. Create a `IMDInterstitialPlacement`with placement id and placement type. Then load the interstitial ad with the placement. On successful loading you will be notified on `onLoad:` delegate. After loading completed, present your interstitial ad from the top most view controller.
+ Create a `IMDInterstitialPlacement`with placement id and placement type. Then load the interstitial ad with the placement. On complete loading you will be notified on load method completion block. After loading completed, present your interstitial ad from the top most view controller.
+
+ > **_NOTE:_**  You must store the loaded ad to use it later for showing interstitial ad.
 * Objective-C
 ```objc
-    //Initialize interstitial ad
-    self.interstitialAd = [[IMDInterstitialAd alloc] initWithDelegate:self];
+    @property(nonatomic, strong) IMDInterstitialAd *interstitialAd;
 
     //Load interstitial ad
-    IMDInterstitialPlacement *placement = [[IMDInterstitialPlacement alloc] initWithPlacementId:@"YOUR_PLACEMENT_ID_HERE"]; withType:IMDInterstitialPlacementType_STATIC];
-    [self.interstitialAd loadAdWithPlacement: placement];
+    IMDInterstitialPlacement *placement = [[IMDInterstitialPlacement alloc] initWithPlacementId:@"YOUR_PLACEMENT_ID_HERE" withType:IMDInterstitialPlacementType_STATIC];
+    __weak typeof(self) weakSelf = self;
+    [IMDInterstitialAd loadAdWithPlacement:placement completionHandler:^(IMDInterstitialAd * _Nullable ad, IMDError * _Nullable error) {
+        if(error != nil) {
+            NSLog(@"Error: %@", error.message);
+        }else {
+            weakSelf.interstitialAd = ad;
+            weakSelf.interstitialAd.fullScreenContentDelegate = weakSelf;
+        }
+    }];
     
     //Present interstitial ad on load success
     [self.interstitialAd presentFromRootViewController:topmostViewController];
 ```
 * Swift
 ```Swift
-    //Initialize interstitial ad
-    self.interstitialAd = IMDInterstitialAd(delegate: self)
+    var interstitialAd: IMDInterstitialAd!
     
     //Load interstitial ad
     let placement = IMDInterstitialPlacement(placementId: "YOUR_PLACEMENT_ID_HERE", with: .STATIC)
-    self.interstitialAd.load(with: placement)
+    IMDInterstitialAd.load(with: placement) {[weak self] ad, error in
+            if error != nil {
+                print("Error: \(error?.message ?? "")")
+            }else {
+                self?.interstitialAd = ad
+                self?.interstitialAd.fullScreenContentDelegate = self
+            }
+    }
 
     //Present interstitial ad on load success
     self.interstitialAd.present(fromRootViewController: topmostViewController)
 ```
-Implement `IMDInterstitialAdDelegate` for all kind of success and error callbacks
+Implement `IMDFullScreenPresentableAd` delegate
 
 * Objective-C
 ```objc
-    -(void)onLoadInterstitialAd:(IMDInterstitialAd *)ad {
+-(void)onDisplayedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
+}
 
-    -(void)onFailedToLoadInterstitialAd:(IMDInterstitialAd *)ad withError:(IMDError *)error {
+-(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error {
     
-    }
+}
 
-    -(void)onClickedInterstitialAd:(IMDInterstitialAd *)ad {
-
-    }
-
-    -(void)onDisplayedInterstitialAd:(IMDInterstitialAd *)ad {
+-(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
+}
 
-    -(void)onFailedToDisplayInterstitialAd:(IMDInterstitialAd *)ad withError:(IMDError *)error {
+-(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
-
-    -(void)onClosedInterstitialAd:(IMDInterstitialAd *)ad {
-    
-    }
+}
 ```
+
 * Swift
 ```Swift
-    func onLoad(_ ad: IMDInterstitialAd) {
+    func onDisplayedAd(_ ad: IMDFullScreenPresentableAd) {
         
     }
-    func onFailed(toLoad ad: IMDInterstitialAd, withError error: IMDError) {
+
+    func onFailed(toDisplay ad: IMDFullScreenPresentableAd, withError error: IMDError) {
         
     }
-    func onDisplayedInterstitialAd(_ ad: IMDInterstitialAd) {
+    
+    func onClickedAd(_ ad: IMDFullScreenPresentableAd) {
         
     }
-    func onFailed(toDisplay ad: IMDInterstitialAd, withError error: IMDError) {
-        
-    }
-    func onClickedInterstitialAd(_ ad: IMDInterstitialAd) {
-        
-    }
-    func onClosedInterstitialAd(_ ad: IMDInterstitialAd) {
+    
+    func onClosedAd(_ ad: IMDFullScreenPresentableAd) {
         
     }
 ```
 
 ## **Rewarded Video Ad** 
 
-Initialize rewarded video ad using `IMDRewardedVideoAd` class with your rewarded video ad placement Id and `IMDRewardedVideoAdDelegate`. Then load the interstitial ad. On successful loading you will be notified on `onLoad:` delegate. After loading completed, present your rewarded video ad from the top most view controller.
+Load the rewarded video ad with placement Id. On complete loading you will be notified on load method completion block. After loading completed, present your rewarded video ad from the top most view controller.
+
+ > **_NOTE:_**  You must store the loaded ad to use it later for showing rewarded video ad.
 
 * Objective-C
 ```objc
-    //Initialize rewarded video ad
-    self.rewardedAd = [[IMDRewardedVideoAd alloc] initWithPlacementId:@"YOUR_PLACEMENT_ID_HERE" withDelegate:self];
+    @property(nonatomic, strong) IMDRewardedVideoAd *rewardedAd;
     
+    __weak typeof(self) weakSelf = self;
     //Load rewarded video ad
-    [self.rewardedAd loadAd];
+    [IMDRewardedVideoAd loadAdWithPlacementId:placementId completionHandler:^(IMDRewardedVideoAd * _Nullable ad, IMDError * _Nullable error) {
+        if(error != nil) {
+            NSLog(@"Error: %@", error.message);
+        }else {
+            weakSelf.rewardedAd = ad;
+            weakSelf.rewardedAd.fullScreenContentDelegate = weakSelf;
+            weakSelf.rewardedAd.rewardEarnedDelegate = weakSelf;
+        }
+    }];
 
     //Present rewarded video ad on load success
     [self.rewardedAd presentFromRootViewController:topmostViewController];
 ```
 * Swift
 ```Swift
-    //Initialize rewarded video ad
-    self.rewardedVideoAd = IMDRewardedVideoAd(placementId: "YOUR_PLACEMENT_ID_HERE", with: self)
+    var rewardedAd: IMDRewardedVideoAd!
     
     //Load rewarded video ad
-    self.rewardedVideoAd.load()
+    IMDRewardedVideoAd.load(withPlacementId: "YOUR_PLACEMENT_ID_HERE") {[weak self] ad, error in
+            if error != nil {
+                print("Error: \(error?.message ?? "")")
+            }else {
+                self?.rewardedAd = ad
+                self?.rewardedAd.fullScreenContentDelegate = self
+                self?.rewardedAd.rewardEarnedDelegate = self
+            }
+    }
 
     //Present rewarded video ad on load success
     self.rewardedVideoAd.present(fromRootViewController: topmostViewController)
 ```
-Implement `IMDRewardedVideoAdDelegate` for all kind of success, error and reward callbacks
+Implement `IMDFullScreenPresentableAd` delegate
 
 * Objective-C
 ```objc
-    -(void)onLoadAd:(IMDRewardedVideoAd *)ad {
+-(void)onDisplayedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
+}
 
-    -(void)onFailedToLoadAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error {
+-(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error {
     
-    }
+}
 
-    -(void)onClickedAd:(IMDRewardedVideoAd *)ad {
+-(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
+}
 
-    -(void)onDisplayedAd:(IMDRewardedVideoAd *)ad {
+-(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad {
     
-    }
-
-    -(void)onFailedToDisplayAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error {
-    
-    }
-
-    -(void)onClosedAd:(IMDRewardedVideoAd *)ad {
-    
-    }
-
-    - (void)rewardEarnedOnRewardedVideoAd:(IMDRewardedVideoAd *)ad {
-    
-    }
+}
 ```
+
 * Swift
 ```Swift
-    func onLoad(_ ad: IMDRewardedVideoAd) {
+    func onDisplayedAd(_ ad: IMDFullScreenPresentableAd) {
+        
+    }
+
+    func onFailed(toDisplay ad: IMDFullScreenPresentableAd, withError error: IMDError) {
         
     }
     
-    func onFailed(toLoad ad: IMDRewardedVideoAd, withError error: IMDError) {
+    func onClickedAd(_ ad: IMDFullScreenPresentableAd) {
         
     }
     
-    func onClickedAd(_ ad: IMDRewardedVideoAd) {
-        
-    }
-    
-    func onDisplayedAd(_ ad: IMDRewardedVideoAd) {
-        
-    }
-    
-    func onFailed(toDisplay ad: IMDRewardedVideoAd, withError error: IMDError) {
-        
-    }
-    
-    func onClosedAd(_ ad: IMDRewardedVideoAd) {
-        
-    }
-    
-    func rewardEarned(on ad: IMDRewardedVideoAd) {
+    func onClosedAd(_ ad: IMDFullScreenPresentableAd) {
         
     }
 ```
+Implement `IMDRewardEarnedDelegate` delegate
+
+* Objective-C
+```objc
+- (void)rewardEarnedOnRewardedVideoAd:(IMDRewardedVideoAd *)ad {
+    
+}
+```
+
+* Swift
+```Swift
+func rewardEarned(on ad: IMDRewardedVideoAd!) {
+        
+}
+```
+
+## **SDK Migration**
+
+## Migrate from v2 to v3
+### **Interstitial ad load method**
+v2 | v3 
+--- | --- 
+-(instancetype)init | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDInterstitialAd` 
++(instancetype)new | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDInterstitialAd` 
+-(void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement | + (void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement completionHandler:(nonnull IMDInterstitialAdLoadCompletionHandler)completionHandler
+|
+
+### **Interstitial ad delegate methods**
+v2 | v3 
+--- | --- 
+**IMDInterstitialAdDelegate** | **IMDFullScreenPresentableAd** 
+-(void)onLoadInterstitialAd:(IMDInterstitialAd *)ad | Ad load success status is included in the load completion handler of load function in the `IMDInterstitialAd` class 
+-(void)onFailedToLoadInterstitialAd:(IMDInterstitialAd *)ad withError:(IMDError *)error | Ad load failure status is included as error in the load completion handler of load function in the `IMDInterstitialAd` class 
+-(void)onDisplayedInterstitialAd:(IMDInterstitialAd *)ad | -(void)onDisplayedAd:(id<IMDFullScreenPresentableAd>)ad 
+-(void)onFailedToDisplayInterstitialAd:(IMDInterstitialAd *)ad withError:(IMDError *)error | -(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error 
+-(void)onClickedInterstitialAd:(IMDInterstitialAd *)ad | -(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad 
+-(void)onClosedInterstitialAd:(IMDInterstitialAd *)ad | -(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad 
+|
+
+
+### **Interstitial ad load method**
+v2 | v3 
+--- | --- 
+-(instancetype)init | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDRewardedVideoAd` 
++(instancetype)new | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDRewardedVideoAd` 
+-(void)loadAd | + (void)loadAdWithPlacementId:(nonnull NSString *)placementId completionHandler:(nonnull IMDRewardedVideoAdLoadCompletionHandler)completionHandler
+|
+
+
+### **Rewarded video ad delegate methods**
+v2 | v3 
+--- | --- 
+**IMDInterstitialAdDelegate** | **IMDFullScreenPresentableAd** 
+-(void)onLoadAd:(IMDRewardedVideoAd *)ad | Ad load success status is included in the load completion handler of load function in the `IMDRewardedVideoAd` class 
+-(void)onFailedToLoadAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error | Ad load failure status is included as error in the load completion handler of load function in the `IMDRewardedVideoAd` class 
+-(void)onDisplayedAd:(IMDRewardedVideoAd *)ad | -(void)onDisplayedAd:(id<IMDFullScreenPresentableAd>)ad 
+-(void)onFailedToDisplayAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error | -(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error 
+-(void)onClickedAd:(IMDRewardedVideoAd *)ad | -(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad 
+-(void)onClosedAd:(IMDRewardedVideoAd *)ad | -(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad 
+|

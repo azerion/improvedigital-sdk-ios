@@ -7,20 +7,20 @@
 
 #import <Foundation/Foundation.h>
 #import <ImproveDigital/IMDInterstitialPlacement.h>
-#import <ImproveDigital/IMDInterstitialAdDelegate.h>
 #import <ImproveDigital/IMDFullScreenPresentableAd.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IMDInterstitialAd : NSObject <IMDFullScreenPresentableAd>
 
-@property (strong, nonatomic, readonly) IMDInterstitialPlacement *placement;
+typedef void (^IMDInterstitialAdLoadCompletionHandler)(IMDInterstitialAd *_Nullable, IMDError *_Nullable);
 
-@property(nonatomic, weak, nullable) id<IMDInterstitialAdDelegate> delegate;
+@property (strong, nonatomic, readonly, nonnull) IMDInterstitialPlacement *placement;
 
--(instancetype)initWithDelegate:(id<IMDInterstitialAdDelegate>)delegate;
++ (void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement completionHandler:(nonnull IMDInterstitialAdLoadCompletionHandler)completionHandler;
 
--(void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement;
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 
