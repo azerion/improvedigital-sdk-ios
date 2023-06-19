@@ -404,7 +404,7 @@ v2 | v3
 ### **Rewarded video ad delegate methods**
 v2 | v3 
 --- | --- 
-**IMDInterstitialAdDelegate** | **IMDFullScreenPresentableAd** 
+**IMDRewardedVideoAdDelegate** | **IMDFullScreenPresentableAd** 
 `-(void)onLoadAd:(IMDRewardedVideoAd *)ad` | Ad load success status is included in the load completion handler of load function in the `IMDRewardedVideoAd` class 
 `-(void)onFailedToLoadAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error` | Ad load failure status is included as error in the load completion handler of load function in the `IMDRewardedVideoAd` class 
 `-(void)onDisplayedAd:(IMDRewardedVideoAd *)ad` | `-(void)onDisplayedAd:(id<IMDFullScreenPresentableAd>)ad` 
