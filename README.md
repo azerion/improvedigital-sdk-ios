@@ -392,7 +392,7 @@ v2 | v3
 
 
 
-### **Interstitial ad load method**
+### **Rewarded video ad load method**
 v2 | v3 
 --- | --- 
 `-(instancetype)init` | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDRewardedVideoAd` 
