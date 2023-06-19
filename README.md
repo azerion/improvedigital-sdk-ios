@@ -377,7 +377,7 @@ v2 | v3
 `-(instancetype)init` | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDInterstitialAd` 
 `+(instancetype)new` | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDInterstitialAd` 
 `-(void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement` | `+ (void)loadAdWithPlacement:(IMDInterstitialPlacement *)placement completionHandler:(nonnull IMDInterstitialAdLoadCompletionHandler)completionHandler`
-|
+
 
 ### **Interstitial ad delegate methods**
 v2 | v3 
@@ -389,7 +389,7 @@ v2 | v3
 `-(void)onFailedToDisplayInterstitialAd:(IMDInterstitialAd *)ad withError:(IMDError *)error` | `-(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error` 
 `-(void)onClickedInterstitialAd:(IMDInterstitialAd *)ad` | `-(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad` 
 `-(void)onClosedInterstitialAd:(IMDInterstitialAd *)ad` | `-(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad` 
-|
+
 
 
 ### **Interstitial ad load method**
@@ -398,7 +398,7 @@ v2 | v3
 `-(instancetype)init` | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDRewardedVideoAd` 
 `+(instancetype)new` | This method has been made unavailable. On ad load completion handler you will get allocated instance of `IMDRewardedVideoAd` 
 `-(void)loadAd` | `+ (void)loadAdWithPlacementId:(nonnull NSString *)placementId completionHandler:(nonnull IMDRewardedVideoAdLoadCompletionHandler)completionHandler`
-|
+
 
 
 ### **Rewarded video ad delegate methods**
@@ -411,4 +411,3 @@ v2 | v3
 `-(void)onFailedToDisplayAd:(IMDRewardedVideoAd *)ad withError:(IMDError *)error` | `-(void)onFailedToDisplayAd:(id<IMDFullScreenPresentableAd>)ad withError:(IMDError *)error` 
 `-(void)onClickedAd:(IMDRewardedVideoAd *)ad` | `-(void)onClickedAd:(id<IMDFullScreenPresentableAd>)ad` 
 `-(void)onClosedAd:(IMDRewardedVideoAd *)ad` | `-(void)onClosedAd:(id<IMDFullScreenPresentableAd>)ad` 
-|
