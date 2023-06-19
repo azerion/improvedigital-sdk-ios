@@ -4,19 +4,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ImproveDigital/IMDRewardEarnedDelegate.h>
 #import <ImproveDigital/IMDFullScreenPresentableAd.h>
-#import <ImproveDigital/IMDRewardedVideoAdDelegate.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^IMDRewardedVideoAdLoadCompletionHandler)(IMDRewardedVideoAd *_Nullable, IMDError *_Nullable);
+
 @interface IMDRewardedVideoAd : NSObject <IMDFullScreenPresentableAd>
 
-@property (strong, nonatomic, nonnull) NSString *placementId;
+@property (strong, nonatomic, readonly, nonnull) NSString *placementId;
 
-@property(nonatomic, weak, nullable) id<IMDRewardedVideoAdDelegate> delegate;
+@property (nonatomic, weak, nullable) id<IMDRewardEarnedDelegate> rewardEarnedDelegate;
 
--(instancetype)initWithPlacementId:(NSString *)placementId withDelegate:(id<IMDRewardedVideoAdDelegate>)delegate;
--(void)loadAd;
++ (void)loadAdWithPlacementId:(nonnull NSString *)placementId completionHandler:(nonnull IMDRewardedVideoAdLoadCompletionHandler)completionHandler;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 
